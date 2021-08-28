@@ -51,6 +51,7 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@commitlint/cz-commitlint": "^13.1.0",
+    "@tsconfig/create-react-app": "^1.0.2",
     "commitizen": "^4.2.4",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.0",
