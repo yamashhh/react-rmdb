@@ -1,7 +1,7 @@
-import React from 'react';
-
 // React without JSX
 // https://reactjs.org/docs/react-without-jsx.html
+//
+// import React from 'react';
 //
 // function Star() {
 //   return React.createElement('div', null, 'This is a little start');
@@ -11,8 +11,18 @@ import React from 'react';
 //   return Star();
 // }
 
+import { GlobalStyle } from './GlobalStyle';
+import Header from './components/Header';
+import Home from './components/Home';
+
 function App() {
-  return <div className="App">Start here.</div>;
+  return (
+    <div className="App">
+      <Header />
+      <Home />
+      <GlobalStyle />
+    </div>
+  );
 }
 
 export default App;
