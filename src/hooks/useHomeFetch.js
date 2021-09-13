@@ -11,10 +11,9 @@ const initialState = {
 export default function useHomeFetch() {
   const [state, setState] = useState(initialState);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  console.log(searchTerm);
 
   async function fetchMovies(page, searchTerm = '') {
     setError(false);
@@ -33,10 +32,23 @@ export default function useHomeFetch() {
     }
   }
 
+  // NOTE:
+  // useEffect for initial render
+  // & fetching results related to searchTerm
   useEffect(() => {
     setState(initialState);
     fetchMovies(1, searchTerm);
   }, [searchTerm]);
 
-  return { state, searchTerm, setSearchTerm, loading, error };
+  // NOTE:
+  // useEffect for loading more pages
+  useEffect(() => {
+    if (!isLoadingMore) return;
+    fetchMovies(state.page + 1, searchTerm);
+    setIsLoadingMore(false);
+  }, [isLoadingMore, state.page, searchTerm]);
+
+  console.dir(state);
+
+  return { state, searchTerm, setSearchTerm, setIsLoadingMore, loading, error };
 }
