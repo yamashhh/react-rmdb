@@ -32,7 +32,7 @@ export const Content = styled.div`
     height: 40px;
     padding: 0 0 0 60px;
     margin: 8px 0;
-    font-size: 20px;
+    font-size: var(--fontBig);
     color: var(--white);
     background: transparent;
     border: 0;
