@@ -1,1 +1,1 @@
-module.exports = { extends: ['@commitlint/config-conventional', 'gitmoji'] };
+module.exports = { extends: ['@commitlint/config-conventional'] };
