@@ -1,4 +1,5 @@
 import { Wrapper, Content, Text } from './HeroImage.styles';
+import PropTypes from 'prop-types';
 
 export default function HeroImage({ image, title, text }) {
   return (
@@ -12,3 +13,9 @@ export default function HeroImage({ image, title, text }) {
     </Wrapper>
   );
 }
+
+HeroImage.propTypes = {
+  image: PropTypes.string,
+  title: PropTypes.string,
+  text: PropTypes.string,
+};
