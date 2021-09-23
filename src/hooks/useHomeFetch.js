@@ -59,7 +59,5 @@ export default function useHomeFetch() {
     if (!searchTerm) sessionStorage.setItem('homeState', JSON.stringify(state));
   }, [searchTerm, state]);
 
-  console.dir(state);
-
   return { state, searchTerm, setSearchTerm, setIsLoadingMore, loading, error };
 }
