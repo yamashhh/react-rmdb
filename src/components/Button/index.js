@@ -1,4 +1,5 @@
 import { Wrapper } from './Button.styles';
+import PropTypes from 'prop-types';
 
 export default function Button({ text, callback }) {
   return (
@@ -7,3 +8,8 @@ export default function Button({ text, callback }) {
     </Wrapper>
   );
 }
+
+Button.propTypes = {
+  text: PropTypes.string,
+  callback: PropTypes.func,
+};

@@ -1,4 +1,5 @@
 import { Wrapper, Content } from './Grid.styles';
+import PropTypes from 'prop-types';
 
 export default function Grid({ header, children }) {
   return (
@@ -8,3 +9,7 @@ export default function Grid({ header, children }) {
     </Wrapper>
   );
 }
+
+Grid.propTypes = {
+  header: PropTypes.string,
+};
