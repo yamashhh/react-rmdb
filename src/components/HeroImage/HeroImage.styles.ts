@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ image: string }>`
   position: relative;
   height: 600px;
   background: linear-gradient(
