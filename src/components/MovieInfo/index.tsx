@@ -4,8 +4,24 @@ import NoImage from '../../images/no_image.jpg';
 import { Wrapper, Content, Text } from './MovieInfo.styles';
 import { MovieState } from '../../hooks/useMovieFetch';
 // import PropTypes from 'prop-types';
+import Rate from '../Rate';
+import { Context, UserContext } from '../../context';
+import { useContext } from 'react';
+import API from '../../API';
 
 export default function MovieInfo({ movie }: { movie: MovieState }) {
+  const [user] = useContext(Context) as UserContext;
+
+  async function handleRating(value: string) {
+    if (!user) return console.error('User credentials not found.');
+    const rate = await API.rateMovie(
+      user.sessionId,
+      movie.id.toString(),
+      value,
+    );
+    console.warn(rate);
+  }
+
   return (
     <Wrapper backdrop={movie.backdrop_path}>
       <Content>
@@ -33,6 +49,12 @@ export default function MovieInfo({ movie }: { movie: MovieState }) {
               ))}
             </div>
           </div>
+          {user && (
+            <div>
+              <p>Rate Movie</p>
+              <Rate callback={handleRating} />
+            </div>
+          )}
         </Text>
       </Content>
     </Wrapper>

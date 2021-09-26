@@ -72,12 +72,15 @@ const apiSettings = {
     return await (await fetch(creditsEndpoint)).json();
   },
   // Bonus material below for login
-  getRequestToken: async () => {
+  getRequestToken: async (): Promise<string> => {
     const reqToken = await (await fetch(REQUEST_TOKEN_URL)).json();
     return reqToken.request_token;
   },
-  // @ts-ignore
-  authenticate: async (requestToken, username, password) => {
+  authenticate: async (
+    requestToken: string,
+    username: string,
+    password: string,
+  ): Promise<{ session_id: string; success: boolean } | void> => {
     const bodyData = {
       username,
       password,
@@ -90,19 +93,17 @@ const apiSettings = {
         body: JSON.stringify(bodyData),
       })
     ).json();
+    if (!data.success) throw new Error('Authentication failed.');
     // Then get the sessionId with the requestToken
-    if (data.success) {
-      const sessionId = await (
-        await fetch(SESSION_ID_URL, {
-          ...defaultConfig,
-          body: JSON.stringify({ request_token: requestToken }),
-        })
-      ).json();
-      return sessionId;
-    }
+    const sessionId = await (
+      await fetch(SESSION_ID_URL, {
+        ...defaultConfig,
+        body: JSON.stringify({ request_token: requestToken }),
+      })
+    ).json();
+    return sessionId;
   },
-  // @ts-ignore
-  rateMovie: async (sessionId, movieId, value) => {
+  rateMovie: async (sessionId: string, movieId: string, value: string) => {
     const endpoint = `${API_URL}movie/${movieId}/rating?api_key=${API_KEY}&session_id=${sessionId}`;
 
     const rating = await (
