@@ -5,7 +5,6 @@ import Grid from './Grid';
 import Thumb from './Thumb';
 import Spinner from './Spinner';
 import Button from './Button';
-// import useHomeFetch from '../hooks/useHomeFetch';
 import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config';
 import NoImage from '../images/no_image.jpg';
 import API from '../API';

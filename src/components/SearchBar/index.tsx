@@ -3,7 +3,11 @@ import searchIcon from '../../images/search-icon.svg';
 import { Wrapper, Content } from './SearchBar.styles';
 import PropTypes from 'prop-types';
 
-export default function SearchBar({ setSearchTerm }) {
+export default function SearchBar({
+  setSearchTerm,
+}: {
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const [state, setState] = useState('');
   const initial = useRef(true);
 

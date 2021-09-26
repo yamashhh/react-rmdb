@@ -2,9 +2,10 @@ import Thumb from '../Thumb';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../config';
 import NoImage from '../../images/no_image.jpg';
 import { Wrapper, Content, Text } from './MovieInfo.styles';
-import PropTypes from 'prop-types';
+import { MovieState } from '../../hooks/useMovieFetch';
+// import PropTypes from 'prop-types';
 
-export default function MovieInfo({ movie }) {
+export default function MovieInfo({ movie }: { movie: MovieState }) {
   return (
     <Wrapper backdrop={movie.backdrop_path}>
       <Content>
@@ -38,6 +39,6 @@ export default function MovieInfo({ movie }) {
   );
 }
 
-MovieInfo.propTypes = {
-  movie: PropTypes.object,
-};
+// MovieInfo.propTypes = {
+//   movie: PropTypes.object,
+// };
