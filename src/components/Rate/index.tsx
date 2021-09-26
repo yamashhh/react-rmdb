@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function Rate({
   callback,
 }: {
-  callback: (value: string) => void;
+  callback: (value: string) => Promise<void>;
 }) {
   const [value, setValue] = useState('5');
 

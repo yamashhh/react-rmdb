@@ -10,6 +10,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setUser] = useContext(Context) as UserContext;
   const navigate = useNavigate();
 
